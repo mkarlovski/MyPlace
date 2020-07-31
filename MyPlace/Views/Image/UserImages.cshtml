@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MyPlace.ViewModel.UserImageViewModel>
+﻿@model List<MyPlace.ViewModel.UserImageViewModel>
 
 @{
     ViewData["Title"] = "UserImages";
@@ -14,13 +14,13 @@
         <tr>
            
             <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
+               Image
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DatePosted)
+                Date Posted
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IsPrivate)
+                Is Private
             </th>
             <th></th>
         </tr>
@@ -30,7 +30,7 @@
         <tr>
             
             <td>
-                @Html.DisplayFor(modelItem => item.ImageUrl)
+                <img src="@item.ImageUrl" alt="image" style="width: 50px;"/>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DatePosted)
@@ -39,9 +39,7 @@
                 @Html.DisplayFor(modelItem => item.IsPrivate)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+               <a asp-action="EditImage" asp-route-imageId="@item.Id">Edit</a>  | <a asp-action="DeleteImage" asp-route-imageId="@item.Id" >Delete</a>
             </td>
         </tr>
 }
