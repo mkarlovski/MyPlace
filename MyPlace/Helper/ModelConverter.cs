@@ -45,5 +45,15 @@ namespace MyPlace.Helper
             };
         }
 
+        public static HomeOverviewModel ToHomeOverview(this Image image)
+        {
+            return new HomeOverviewModel
+            {
+                ImageUrl = image.ImageUrl,
+                DateCreated = image.DateCreated,
+                UserEmail = image.User.Email
+            };
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using MyPlace.Data;
 using MyPlace.Models;
 using MyPlace.Repositories.Interfaces;
@@ -36,7 +37,7 @@ namespace MyPlace.Repositories
 
         public List<Image> GetAll()
         {
-            return context.Images.ToList();
+            return context.Images.Include(x=>x.User).ToList();
         }
 
         public Image GetImageById(int imageId)
